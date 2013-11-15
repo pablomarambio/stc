@@ -1,0 +1,130 @@
+- content_for(:header) do
+  #nav
+    %ul.navigation
+      %li.dont-show-mobile{"data-slide" => "1"} StartClass
+      %li{"data-slide" => "2"} Upcoming events
+      %li{"data-slide" => "4"} How does it work?
+      %li.dont-show-mobile{"data-slide" => "5"} The team
+
+#slide-home.slide{"data-slide" => "1", "data-stellar-background-ratio" => "0.5"}
+  .container.clearfix
+    .content.grid_8
+      %h1 Relax, get to know people like you and meet someone special
+      %p
+        %a{ :href => "#", "data-slide" => "2" }
+          %img{src: "assets/bn-upcoming events 3.png"}
+#slide2.slide{"data-slide" => "2", "data-stellar-background-ratio" => "0.5"}
+  .container.clearfix
+    .content.grid_12.omega
+      %h1 Upcoming Events
+    - Event.upcoming_for("Santiago").each do |e|
+      .event.grid_12.omega
+        %h2
+          = link_to e.name, public_show_event_path(e) 
+        %h3
+          #{e.when.strftime "%Y/%m/%d"} / #{e.when.strftime "%H:%M"} / #{e.address} / #{e.city}
+        %p= e.description
+        .bottomline
+          %span
+            USD #{number_to_currency e.price, precision: 2}
+          - if user_signed_in? && e.users.where(id: current_user.id).any?
+            You already applied!
+          - else
+            = link_to "", public_show_event_path(e), class: "apply_with_linkedin"
+#slide3.slide{"data-slide" => "3", "data-stellar-background-ratio" => "0.8"}
+  .container.clearfix
+    .grid_12
+      %h1 The experience
+      %h2 You can relax the moment you arrive at the venue.
+      %p
+        This is not express dating.
+#slide4.slide{"data-slide" => "4"}
+  .container.clearfix
+    .grid_12
+      %h1 How does it work?
+    .grid_3.faq
+      .circle
+        %div 1
+      %p
+        %h3 Choose an interesting event and apply
+      %p
+        Whether you have a passion for music, dining, cooking, wine, and you would like to share yourself; you can choose from a variety of live events and join for sound company and a time you won't regret. It's simple, choose an event, fill out some basic info and apply.
+    .grid_3.faq
+      .circle
+        %div 2
+      %p
+        %h3 Confirm
+      %p
+        Once you have applied, you'll be contact by our staff to get to know you a bit more…. We'll make sure YOU'll be at the right time and right place...
+    .grid_3.faq
+      .circle
+        %div 3
+      %p
+        %h3 Have fun!
+      %p
+        We'll send confirmation and you will receive all the information you need to know (nothing more, nothing less). We'll choose an outstanding guest list and arrange all minor details of the event. You'll enjoy every moment since you arrive
+    .grid_3.faq
+      .circle
+        %div 4
+      %p
+        %h3 Find your soulmate
+      %p
+        You will secretly choose up to 3 guests that caught your attention. If those guests similarly showed interest in you, we'll notify you and you'll gain access to their complete profile. From this moment, It's up to you if you take advantage of a sound opportunity! We guarantee your confidentiallity...
+
+#slide5.slide{"data-slide" => "5", "data-stellar-background-ratio" => "0.5"}
+  .container.footer.clearfix
+    .grid_12.omega
+      %h1 The team
+    .grid_12.omega
+      %h2 Bogotá office
+    .grid_3.member
+      = image_tag "mugshot-1.jpg"
+      %h3 Josefina
+      %p CEO
+    .grid_3.member
+      = image_tag "mugshot-2.jpg"
+      %h3 Paula
+      %p VP Sales
+    .grid_3.member
+      = image_tag "mugshot-3.jpg"
+      %h3 Carlos
+      %p Chief Assistant
+    .grid_3.member
+      = image_tag "mugshot-1.jpg"
+      %h3 Pamela
+      %p Sales
+    .grid_12.omega.margin-top
+      %h2 Santiago office
+    .grid_3.member
+      = image_tag "mugshot-3.jpg"
+      %h3 Josefina
+      %p CEO
+    .grid_3.member
+      = image_tag "mugshot-1.jpg"
+      %h3 Paula
+      %p Master Sales
+    .grid_3.member
+      = image_tag "mugshot-2.jpg"
+      %h3 Carlos
+      %p OMG what a title!
+    .grid_3.member
+      = image_tag "mugshot-3.jpg"
+      %h3 Pamela
+      %p same here
+
+#slide-footer.slide{"data-slide" => "6", "data-stellar-background-ratio" => "0.5"}
+  .container.footer.clearfix
+    .grid_4
+      %ul
+        %li About us
+        %li Santiago office
+        %li Bogotá office
+        %li Work with us
+    .grid_4
+      %ul
+        %li FAQ
+        %li Pricing
+        %li Terms & Conditions
+        %li Become a partner
+    .logo.grid_4.omega
+      %img{src: "assets/logo-1-1.png"}/

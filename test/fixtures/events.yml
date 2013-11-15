@@ -1,0 +1,32 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+past:
+  when: 2013-10-18 14:13:51
+  duration: 1
+  address: MyString
+  city: Santiago
+  country: MyString
+  name: MyString
+  description: MyText
+  picture: MyString
+
+future1:
+  when: 2014-10-18 14:13:51
+  duration: 1
+  address: MyString
+  city: Santiago
+  country: MyString
+  name: Über Event 1
+  description: MyText
+  picture: MyString
+
+future2:
+  when: 2014-10-18 14:13:51
+  duration: 1
+  address: MyString
+  city: Santiago
+  country: MyString
+  name: Super Event 2
+  description: MyText
+  picture: MyString
