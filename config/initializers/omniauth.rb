@@ -2,8 +2,8 @@ if Rails.env.development? || Rails.env.test?
 	LINKEDIN_API_KEY = "qm9p1viz2gq7"
 	LINKEDIN_API_SEC = "1gQqsRmpOF66ZPDl"
 elsif Rails.env.production?
-	LINKEDIN_API_KEY = "39g8fpt8sm78"
-	LINKEDIN_API_SEC = "JNInCtYk4SpJs42u"
+	LINKEDIN_API_KEY = "75wzcfhvwgacvq"
+	LINKEDIN_API_SEC = "V1ZQHcdt1rZ6fwUp"
 end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
