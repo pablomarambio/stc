@@ -20,20 +20,41 @@
   .container.clearfix
     .content.grid_12.omega
       %h1 Próximas clases
-    - Event.upcoming_for("Santiago").each do |e|
-      .event.grid_12.omega
-        %h2
-          = link_to e.name, public_show_event_path(e) 
-        %h3
-          #{e.when.strftime "%Y/%m/%d"} / #{e.when.strftime "%H:%M"} / #{e.address} / #{e.city}
-        %p= e.description
-        .bottomline
-          %span
-            #{number_to_currency e.price, precision: 2}
-          - if user_signed_in? && e.users.where(id: current_user.id).any?
-            You already applied!
-          - else
-            = link_to "", public_show_event_path(e), class: "apply_with_linkedin"
+    .event.grid_12.omega
+      /Aspectos contables
+      .date
+        %p
+          17
+          %span DIC
+      %h2 Aspectos contables y legales al formar una empresa
+      %h3 17 de Diciembre de 2013 / 19:00 a 21:00
+      %h3 Hotel Rugendas (Callao 2123, Las Condes)
+      %h3 Expositores: Julio Deramond y Victor Luke
+      %p
+        El objetivo del curso es que el alumno sepa cuáles son los tips más relevantes y/o críticos en cuanto al manejo de la contabilidad al momento de emprender. 
+      %p
+        De manera análoga, también se busca que el alumno maneje un lenguaje básico para relacionarse con un abogado y esté al tanto de los trámites fundamentales.
+      %h4 Tipos de sociedad y esquemas de participación
+      %ul
+        %li ¿Por qué una sociedad? Cuándo no conviene / no aplica la persona natural.
+        %li Tipos de sociedad. Sociedades de personas y de capital. EIRL, LTDA, SpA, SA. Similitudes y diferencias.
+        %li Acuerdos de participación. Acciones. Protección para los socios y la empresa. Vesting.
+        %li Estructura de una empresa. Accionistas, directorio, administración, etc.
+      %h4 Constitución de sociedad e iniciación de actividadesObligaciones contables y tributarias
+      %ul
+        %li Cómo constituir una sociedad. 
+        %li Checklist para constitución vía Internet: requisitos, limitaciones, costos y plazos. 
+        %li Checklist para constitución presencial: actores, papeles, costos y plazos.
+        %li Otros requisitos para iniciar actividades. RUT, patente, permisos. Actores, papeles, costos y plazos.
+      %h4 Obligaciones contables y tributarias
+      %ul
+        %li Relación con el Servicio de Impuestos Internos (obligaciones Mensuales y Anuales)
+        %li Facturación y tratamiento del IVA (Crédito y Débito)
+        %li Boletas de Honorarios
+        %li Impuesto de primera y segunda categoría. Retiros versus sueldos. Global complementario. FUT. Pago de PPM.
+      .bottomline
+        %span $20.000
+        = link_to "Más información", "/events/1/public_show"
 #slide4.slide{"data-slide" => "4"}
   .container.clearfix
     .grid_12
