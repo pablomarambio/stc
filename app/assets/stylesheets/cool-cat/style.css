@@ -149,6 +149,8 @@ a:visited {
 	font-weight: 400;
 }
 
+.slide h4,
+.slide li,
 .slide p {
 	font-size: 1.2em;
 }
@@ -179,6 +181,22 @@ a:visited {
 .event {
 	background-color: #f2f2f2;
 	padding: 40px 40px 5px 40px;
+}
+
+.event h2,
+.event h3,
+.event h4 {
+	font-variant: small-caps;
+}
+
+.event h2 {
+	color: #3C1220;	
+	text-shadow: 2px 2px 2px #B4B2AE;
+}
+
+.event h3 {
+	font-weight: normal;
+	margin-top: 0;
 }
 
 .event .bottomline {
@@ -392,6 +410,7 @@ a.apply_with_linkedin {
 }
 
 .member img {
+	width: 200px;
 	border-radius: 50%;
 }
 
