@@ -73,15 +73,15 @@ a:visited {
 .menu .home-logo-container {
 	float: left;
 	width: 196px;
-	height: 75px;
-	margin: 5px 20px;
+	height: 60px;
+	margin: 10px 20px;
 }
 
 .menu .home-logo-container #home-logo {
 	background-image:url('/assets/logo-2-1.png');
 	background-size: 100% 100%;
-	height: 75px;
-	width: 196px;
+	height: 60px;
+	width: 180px;
 	display: block;
 }
 

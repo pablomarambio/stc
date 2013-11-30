@@ -19,33 +19,18 @@
 
 
   %body
-    .navbar
-      .navbar-inner
-        .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="#") StartClass Backend
-          .container.nav-collapse
-            %ul.nav
-              %li= link_to "Back to Home", root_path
-              %li= link_to "Events", events_path
-              %li= link_to "Users", users_path
-              %li= link_to "Applications", petitions_path
-    .container
-      .row
-        .span9
-          = bootstrap_flash
-          = yield
-        .span3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+    %nav#inv.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
+      .container
+        %ul.nav.navbar-nav
+          %li 
+            %a.navbar-brand{href: root_path}
+          %li
+            %a.title{href: root_path}= content_for :title
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            %button.btn.btn-default.navbar-btn Inscribirse
+                
+    = yield
     
-      %footer
-        %p &copy; Company 2013
+    %footer
+      %p &copy; Company 2013

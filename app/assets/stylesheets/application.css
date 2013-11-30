@@ -9,5 +9,239 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap_and_overrides
+ *= require bootstrap
  */
+
+.pretty-box {
+	position: relative;
+	padding: 45px 15px 15px;
+	margin: 0 -15px 15px;
+	background-color: #fafafa;
+	box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+	border-color: #e5e5e5 #eee #eee;
+	border-style: solid;
+	border-width: 1px 0;
+}
+
+.pretty-box:after {
+	content: "";
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #bbb;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.pretty-box.temario:after {
+	content: "Temario del curso";
+}
+
+/*
+ * Callouts
+ */
+
+.callout {
+  margin: 20px 0;
+  padding: 20px;
+  border-left: 3px solid #eee;
+}
+.callout h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+/* Variations */
+.callout-danger {
+  background-color: #fdf7f7;
+  border-color: #eed3d7;
+}
+.callout-danger h4 {
+  color: #b94a48;
+}
+.callout-warning {
+  background-color: #faf8f0;
+  border-color: #faebcc;
+}
+.callout-warning h4 {
+  color: #c09853;
+}
+.callout-info {
+  background-color: #f4f8fa;
+  border-color: #bce8f1;
+}
+.callout-info h4 {
+  color: #3a87ad;
+}
+
+/*             */
+/*  DATE  BOX  */
+/*             */
+
+.date {
+	float:right;
+	width: 100px; height: 100px; 
+	background: #fcfcfc; 
+	background: linear-gradient(top, #fcfcfc 0%,#dad8d8 100%); 
+	background: -moz-linear-gradient(top, #fcfcfc 0%, #dad8d8 100%); 
+	background: -webkit-linear-gradient(top, #fcfcfc 0%,#dad8d8 100%); 
+	border: 1px solid #d2d2d2;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+}
+
+.date p {
+	margin: 0;
+	font-family: Helvetica, sans-serif; 
+	font-size: 50px; text-align: center; color: #9e9e9e; 
+}
+
+.date p span {
+	background: #d10000; 
+	background: linear-gradient(top, #d10000 0%, #7a0909 100%);
+	background: -moz-linear-gradient(top, #d10000 0%, #7a0909 100%);
+	background: -webkit-linear-gradient(top, #d10000 0%, #7a0909 100%);
+	font-size: 30px; font-weight: bold; color: #fff; text-transform: uppercase; 	
+	display: block;
+	border-top: 3px solid #a13838;
+	border-radius: 0 0 10px 10px;
+	-moz-border-radius: 0 0 10px 10px;
+	-webkit-border-radius: 0 0 10px 10px;
+	padding: 6px 0 6px 0;
+}
+
+/*             */
+/*  PRICE TAG  */
+/*             */
+
+.demo-tags {
+  margin: 1.8em 0;
+  padding: 0;
+  list-style-type: none;
+  display: inline-block;
+}
+
+.demo-tags li {
+  float: left;
+  height: 81px;
+  line-height: 81px;
+  position: relative;
+  margin: 0 0.9em 0.54em 0;
+}
+
+.demo-tags a {
+  background: #B4B2AE;
+  color: #fff;
+  font-size: 36px;
+  text-decoration: none;
+  -webkit-border-top-left-radius: 9px;
+  -webkit-border-bottom-left-radius: 9px;
+  -moz-border-radius-topleft: 9px;
+  -moz-border-radius-bottomleft: 9px;
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+  padding: 18px 18px;
+}
+
+.demo-tags a:after {
+  content: "";
+  float: right;
+  width: 0;
+  height: 0;
+  border-top: 39px solid transparent;
+  border-left: 39px solid #B4B2AE;
+  border-bottom: 39px solid transparent;
+}
+
+.demo-tags a:before {
+  content: "";
+  position: absolute;
+  top: 36px;
+  right: 20px;
+  width: 8px;
+  height: 8px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #ffffff;
+  -moz-box-shadow: -1px -1px 1px #424444;
+  -webkit-box-shadow: -1px -1px 1px #424444;
+  box-shadow: -1px -1px 1px #424444;
+}
+
+nav#inv.navbar {
+	background-image: url('/assets/bg-chalkboard.jpg');
+}
+
+nav#inv.navbar a {
+	color: #9e9e9e;
+}
+
+nav#inv.navbar a.navbar-brand {
+	background-image: url('/assets/logo-2-1.png');
+	background-size: 100% 100%;
+	height: 40px;
+	width: 120px;
+	margin: 5px 0;
+	display: block;
+}
+
+nav#inv.navbar a.title {
+	font-size: 2.5em;
+}
+
+#event-header {
+	padding-top: 3em;
+	background-image: url('/assets/bg-chalkboard.jpg');
+	padding-bottom: 3em;
+	margin-bottom: 3em;
+}
+
+#event-header h1{
+	font-size: 5em;
+	font-variant: small-caps;
+	font-weight: normal;
+	color: #9e9e9e;
+	text-shadow: 2px 2px 2px #B4B2AE;
+}
+
+#event-header h2{
+	font-size: 2em;
+	font-variant: small-caps;
+	color: #9e9e9e;
+}
+
+.curso h2 {
+	font-variant: small-caps;
+}
+
+
+@media(min-width: 768px) {
+	.pretty-box {
+		margin-left: 0;
+		margin-right: 0;
+		border-width: 1px;
+		border-color: #ddd;
+		border-radius: 4px 4px 0 0;
+		box-shadow: none;
+	}
+}
+
+@media(max-width: 1024px) {
+	nav#inv.navbar a.title {
+		font-size: 1.5em;
+	}
+
+	#event-header {
+		margin-bottom: 1em;
+	}
+}
