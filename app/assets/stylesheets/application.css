@@ -224,6 +224,15 @@ nav#inv.navbar a.title {
 	font-variant: small-caps;
 }
 
+.member {
+	text-align: center;
+}
+
+.member img {
+	width: 200px;
+	border-radius: 50%;
+}
+
 
 @media(min-width: 768px) {
 	.pretty-box {
