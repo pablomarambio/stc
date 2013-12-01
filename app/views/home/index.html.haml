@@ -138,14 +138,13 @@
 
 #slide-footer.slide{"data-slide" => "6", "data-stellar-background-ratio" => "0.5"}
   .container.footer.clearfix
-    .grid_4
+    .grid_6
       %ul
-        %li= link_to "contacto@startclass.cl", "mailto:contacto@startclass.cl"
+        %li= link_to "Formulario de contacto", "#", class: "contacto"
         %li Los Laureles 1035, Vitacura
-        %li= link_to "Trabaja con nosotros", "mailto:contacto@startclass.cl"
-    .grid_4
-      %ul 
         %li Términos y condiciones
+    .grid_6.logo.omega
+      = image_tag "logo-2-1.png"
 
 #dialog-contacto{style: "display:none;"}
   %p.validateTips Déjanos tu teléfono o correo electrónico para contactarte
