@@ -181,6 +181,7 @@ a:visited {
 .event {
 	background-color: #f2f2f2;
 	padding: 40px 40px 5px 40px;
+	margin-top: 2em;
 }
 
 .event h2,
@@ -224,6 +225,17 @@ a.inscripcion {
 	background-size: 247px 32px;
 	background-position: left top;
 	background-image: url('/assets/bn-inscripcion.png');
+}
+
+a.avisenme {
+	height: 32px;
+	vertical-align: middle;
+	width: 128px;
+	display:inline-block;
+	background-repeat: no-repeat;
+	background-size: 128px 32px;
+	background-position: left top;
+	background-image: url('/assets/bn-avisenme.png');
 }
 
 /* Public show */
@@ -494,6 +506,7 @@ a.inscripcion {
 	}
 
 	.event {
+		margin-top: 0;
 		padding: 0;
 	}
 
