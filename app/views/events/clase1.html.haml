@@ -143,7 +143,7 @@
               vName = name.val();
               vPhone = phone.val();
               vEmail = email.val();
-              $.post("/contacto/", { name: vName, phone: vPhone, email: vEmail, curso: evento }, function () {
+              $.post("/contacto/", { contact: { user: vName, phone: vPhone, email: vEmail, curso: evento } }, function () {
                 $("#dialog-avisenme").dialog("close");
                 $("#dialog-ok").dialog({modal: true, buttons: {OK: function() {$( this ).dialog( "close" );}}})
               });

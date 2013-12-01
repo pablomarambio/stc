@@ -4,6 +4,12 @@ class HomeController < ApplicationController
   end
 
   def contacto
-  	render json: { name: params["name"]}
+  	@c = Contact.new(contact_params)
+  	@c.save!
+  	render text: "OK"
+  end
+
+  def contact_params
+  	params.require(:contact).permit(:user, :email, :phone, :event, :comment)
   end
 end
