@@ -79,8 +79,8 @@
       %p
         %h3 Escogiendo la clase 
       %p
-        Haz click en "Próximas Clases" y selecciona la(s) que más te interesen. Si no encuentras una clase de tu interés envíanos un mensaje
-        = link_to "haciendo click aquí.", "mailto:contacto@startclass.cl"
+        Haz click en "Próximas Clases" y selecciona las que más te interesen. Si no encuentras una clase de tu interés envíanos un mensaje
+        = link_to "haciendo click aquí.", "#", class: "contacto"
     .grid_4.faq
       .circle
         %div 2
@@ -147,26 +147,55 @@
       %ul 
         %li Términos y condiciones
 
+#dialog-contacto{style: "display:none;"}
+  %p.validateTips Déjanos tu teléfono o correo electrónico para contactarte
+  %form.dialog
+    %fieldset
+      %label{for: "name"} Nombre
+      %input.text.ui-widget-content.ui-corner-all{name: "name", type: "text"}/
+      %label{for: "phone"} Teléfono
+      %input.text.ui-widget-content.ui-corner-all{name: "phone", type: "text", value: ""}/
+      %label{for: "email"} Email
+      %input.text.ui-widget-content.ui-corner-all{name: "email", type: "email", value: ""}/
+      %label{for: "comment"} Comentario
+      %textarea.text.ui-widget-content.ui-corner-all{name: "comment", rows: 5}
+
 #dialog-avisenme{style: "display:none;"}
   %p.validateTips Déjanos tu teléfono o correo electrónico para contactarte cuando el curso esté disponible
   %form.dialog
     %fieldset
       %label{for: "name"} Nombre
-      %input#name.text.ui-widget-content.ui-corner-all{name: "name", type: "text"}/
+      %input.text.ui-widget-content.ui-corner-all{name: "name", type: "text"}/
       %label{for: "phone"} Teléfono
-      %input#phone.text.ui-widget-content.ui-corner-all{name: "phone", type: "text", value: ""}/
+      %input.text.ui-widget-content.ui-corner-all{name: "phone", type: "text", value: ""}/
       %label{for: "email"} Email
-      %input#email.text.ui-widget-content.ui-corner-all{name: "email", type: "email", value: ""}/
+      %input.text.ui-widget-content.ui-corner-all{name: "email", type: "email", value: ""}/
 #dialog-ok{style: "display:none;"}
-  %h1 Te avisaremos cuando el curso esté disponible.
+  %h1#successTip &nbsp;
 
 - content_for :script do
   :plain
-    var name = $("input#name");
-    var phone = $("input#phone");
-    var email = $("input#email");
-    allFields = $( [] ).add( name ).add( email ).add( phone );
-    var tips = $("p.validateTips");
+    var name =       null;
+    var phone =      null;
+    var email =      null;
+    var comment =    null;
+    var tips =       null;
+    var allFields =  null;
+    var defaultTip = null;
+    var successTip = null;
+
+    var emailRegexp = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i;
+    var phoneRegexp = /^(\+)?[0-9 ][0-9 \-]{7,}$/;
+    var nameRegexp = /[a-z]+/i;
+
+    function loadFields(where) {
+      name = $(where + " input[name='name']");
+      phone = $(where + " input[name='phone']");
+      email = $(where + " input[name='email']");
+      comment = $(where + " textarea");
+      allFields = $( [] ).add( name ).add( email ).add( phone ).add( comment );
+      tips = $(where + " p.validateTips");
+    }
 
     function updateTips( t ) {
       if(t) {
@@ -177,7 +206,7 @@
           .addClass( "ui-state-highlight", 200 )
           .removeClass( "ui-state-highlight", 200 );
       } else {
-        tips.text("Déjanos tu teléfono o correo electrónico para contactarte cuando el curso esté disponible");
+        tips.text(defaultTip);
       }
     }
 
@@ -195,6 +224,9 @@
     }
 
     $("a.avisenme").click(function(e){
+      loadFields("#dialog-avisenme");
+      defaultTip = "Déjanos tu teléfono o correo electrónico para contactarte cuando el curso esté disponible";
+      successTip = "Te avisaremos cuando el curso esté disponible";
       var evento = $(this).attr("data-curso");
       $("#dialog-avisenme").dialog({
         modal: true,
@@ -205,9 +237,9 @@
             var contacto = false;
             updateTips();
             allFields.removeClass( "ui-state-error" );
-            valid = valid && checkRegexp(name, /[a-z]+/i, "Por favor escribe tu nombre");
-            contacto = contacto || checkRegexp(phone, /^(\+)?[0-9 ][0-9 \-]{7,}$/, "", false);
-            contacto = contacto || checkRegexp(email, /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "", false);
+            valid = valid && checkRegexp(name, nameRegexp, "Por favor escribe tu nombre");
+            contacto = contacto || checkRegexp(phone, phoneRegexp, "", false);
+            contacto = contacto || checkRegexp(email, emailRegexp, "", false);
             if(!valid) return;
             if(!contacto) {
               email.add(phone).addClass("ui-state-error");
@@ -219,6 +251,47 @@
               vEmail = email.val();
               $.post("/contacto/", { contact: { user: vName, phone: vPhone, email: vEmail, curso: evento } }, function () {
                 $("#dialog-avisenme").dialog("close");
+                $("h1#successTip").text(successTip);
+                $("#dialog-ok").dialog({modal: true, buttons: {OK: function() {$( this ).dialog( "close" );}}})
+              });
+            }
+          },
+          "Cancelar": function () { $( this ).dialog( "close" ); }
+        }
+      });
+      e.preventDefault();
+    });
+
+    $("a.contacto").click(function(e){
+      loadFields("#dialog-contacto");
+      defaultTip = "Déjanos tu comentario y teléfono o correo electrónico para contactarte";
+      successTip = "Gracias. Te contactaremos lo antes posible.";
+      $("#dialog-contacto").dialog({
+        modal: true,
+        title: "Contacto",
+        buttons: {
+          "Guardar": function() {
+            var valid = true;
+            var contacto = false;
+            updateTips();
+            allFields.removeClass( "ui-state-error" );
+            valid = valid && checkRegexp(name, nameRegexp, "Por favor escribe tu nombre");
+            valid = valid && checkRegexp(comment, nameRegexp, "Te faltó el comentario");
+            contacto = contacto || checkRegexp(phone, phoneRegexp, "", false);
+            contacto = contacto || checkRegexp(email, emailRegexp, "", false);
+            if(!valid) return;
+            if(!contacto) {
+              email.add(phone).addClass("ui-state-error");
+              updateTips("Por favor ingresa un celular o correo electrónico válido");
+            }
+            if(valid && contacto) {
+              vName = name.val();
+              vPhone = phone.val();
+              vEmail = email.val();
+              vComment = comment.val();
+              $.post("/contacto/", { contact: { user: vName, phone: vPhone, email: vEmail, comment: vComment } }, function () {
+                $("#dialog-contacto").dialog("close");
+                $("h1#successTip").text(successTip);
                 $("#dialog-ok").dialog({modal: true, buttons: {OK: function() {$( this ).dialog( "close" );}}})
               });
             }
