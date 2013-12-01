@@ -471,6 +471,13 @@ a.avisenme {
 	max-height: 200px;
 }
 
+form label, form input { display:block; }
+form input.text { margin-bottom:12px; width:95%; padding: .4em; }
+form fieldset { padding:0; border:0; margin-top:25px; }
+p.validateTips.ui-state-highlight {
+	border: none;
+}
+
 
 /* Tablet: landscape */
 @media screen and (max-width: 1024px) {

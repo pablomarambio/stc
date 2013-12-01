@@ -13,6 +13,8 @@ Stc::Application.routes.draw do
     end
   end
 
+  post "/contacto/", to: "home#contacto"
+
   get '/evento/aspectos-contables-y-legales-al-formar-una-empresa', to: 'events#clase1', as: 'clase1'
 
   get '/auth/:provider/callback', to: 'sessions#auth_callback'
