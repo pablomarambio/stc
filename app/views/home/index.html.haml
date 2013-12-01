@@ -149,7 +149,7 @@
 
 #dialog-avisenme{style: "display:none;"}
   %p.validateTips Déjanos tu teléfono o correo electrónico para contactarte cuando el curso esté disponible
-  %form
+  %form.dialog
     %fieldset
       %label{for: "name"} Nombre
       %input#name.text.ui-widget-content.ui-corner-all{name: "name", type: "text"}/
@@ -217,7 +217,7 @@
               vName = name.val();
               vPhone = phone.val();
               vEmail = email.val();
-              $.post("/contacto/", { name: vName, phone: vPhone, email: vEmail }, function () {
+              $.post("/contacto/", { name: vName, phone: vPhone, email: vEmail, curso: evento }, function () {
                 $("#dialog-avisenme").dialog("close");
                 $("#dialog-ok").dialog({modal: true, buttons: {OK: function() {$( this ).dialog( "close" );}}})
               });

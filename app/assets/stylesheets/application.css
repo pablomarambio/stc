@@ -10,6 +10,8 @@
  *
  *= require_self
  *= require bootstrap
+ *= require jquery-ui
+ *= require dialog
  */
 
 .pretty-box {
