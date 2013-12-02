@@ -139,12 +139,12 @@ a:visited {
 .slide h1 {
 	font-size: 3.8em;
 	letter-spacing: -3px;
-	line-height: 0px;
+	line-height: 1em;
 	font-weight: 700;
 }
 .slide h2 {
 	font-size: 2em;
-	line-height: 0px;
+	line-height: 1em;
 	padding-bottom:20px;
 	font-weight: 400;
 }
@@ -507,7 +507,6 @@ a.avisenme {
 	}
 
 	.event {
-		margin-top: 0;
 		padding: 0;
 	}
 
