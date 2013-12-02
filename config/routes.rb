@@ -13,6 +13,8 @@ Stc::Application.routes.draw do
     end
   end
 
+  get '/contacts/all/34kjnxnh2c894545yct4582ct259c8ytc', to: 'home#index_contactos'
+
   post "/contacto/", to: "home#contacto"
 
   get '/evento/aspectos-contables-y-legales-al-formar-una-empresa', to: 'events#clase1', as: 'clase1'

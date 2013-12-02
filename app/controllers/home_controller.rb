@@ -9,6 +9,11 @@ class HomeController < ApplicationController
   	render text: "OK"
   end
 
+  def index_contactos
+    @contacts = Contact.all
+    render 'contacts/index', layout: false
+  end
+
   def contact_params
   	params.require(:contact).permit(:user, :email, :phone, :event, :comment)
   end
