@@ -226,6 +226,10 @@ nav#inv.navbar a.title {
 	font-variant: small-caps;
 }
 
+.curso .temario h4 {
+	font-variant: small-caps;
+}
+
 .member {
 	text-align: center;
 }
