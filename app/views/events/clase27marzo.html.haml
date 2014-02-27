@@ -1,0 +1,171 @@
+#event-header
+  .container
+    .row
+      .col-md-12
+        %h1 comenzando un negocio de importaciones en chile
+        %h2 topico 1 / topico 2 / topico 3 / topico 4 / topico 5
+.container.curso
+  .row
+    .col-md-7
+      %p.h3
+        %strong Cuándo:
+        Jueves 27 de marzo 2014 de 19:45 a 22:00 hrs.
+      %p.h3
+        %strong Dónde:
+        Co-Work, La Concepción 141, Of. 501, Providencia
+      %p.h3
+        %strong Expone:
+        Benjamín de Amesti
+    .col-md-5
+      .date
+        %p
+          27
+          %span MAR
+      %ul.demo-tags
+        %li
+          %a{href: "#"} $30.000
+  .row
+    .col-md-7
+      .pretty-box.temario
+        %p
+          Descripción breve
+        %h4 topico 1
+        %ul
+          %li Qué necesita nuestro mercado. Por qué ese producto?
+          %li Búsqueda y selección del proveedor
+          %li Validación de proveedores y herramientas para minimizar el riesgo
+          %li Negociación con el proveedor
+          %li Medios de pago para la operación
+          %li Consolidación de carga
+          %li Selección del transporte (marítimo / aéreo) y contratación de seguros
+          %li Tramitación aduanera, retiro de mercancía y roles del Agente de Aduana
+          %li Entidades que intervienen en la importación
+          %li Costos ocultos de una importación
+          %li Tratados de libre comercio e impuesto ad-valorem
+          %li Problemas y errores comunes a la hora de importar (esto se puede agregar en cada uno de los temas anteriores)
+    .col-md-5
+      %iframe{ src: "https://mapsengine.google.com/map/u/0/embed?mid=z0umjk9nG7zM.keDj-m9WPVh4", width: "100%", height: 480}
+  .row
+    .col-md-12
+      %h2 Instructor
+  .row
+    .col-md-6
+      .member
+        = image_tag "mugshot-ba.jpg"
+        %h3 Benjamín de Amesti
+        %ul.text-left
+          %li Bla
+          %li Bla
+          %li Bla
+          %li Bla
+
+
+#dialog-avisenme{style: "display:none;"}
+  %p.validateTips Déjanos tu teléfono o correo electrónico para contactarte con los detalles.
+  %form.dialog
+    %fieldset
+      %label{for: "name"} Nombre
+      %input#name.text.ui-widget-content.ui-corner-all{name: "name", type: "text"}/
+      %label{for: "phone"} Teléfono
+      %input#phone.text.ui-widget-content.ui-corner-all{name: "phone", type: "text", value: ""}/
+      %label{for: "email"} Email
+      %input#email.text.ui-widget-content.ui-corner-all{name: "email", type: "email", value: ""}/
+#dialog-ok{style: "display:none;"}
+  %h1 Te contactaremos lo antes posible.
+
+
+- content_for :script do
+  :plain
+    var name =       null;
+    var phone =      null;
+    var email =      null;
+    var comment =    null;
+    var tips =       null;
+    var allFields =  null;
+    var defaultTip = null;
+    var successTip = null;
+
+    var emailRegexp = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i;
+    var phoneRegexp = /^(\+)?[0-9 ][0-9 \-]{7,}$/;
+    var nameRegexp = /[a-z]+/i;
+
+    function loadFields(where) {
+      name = $(where + " input[name='name']");
+      phone = $(where + " input[name='phone']");
+      email = $(where + " input[name='email']");
+      comment = $(where + " textarea");
+      allFields = $( [] ).add( name ).add( email ).add( phone ).add( comment );
+      tips = $(where + " p.validateTips");
+    }
+
+    function updateTips( t ) {
+      if(t) {
+        tips
+          .text( t )
+          .addClass( "ui-state-highlight", 200 )
+          .removeClass( "ui-state-highlight", 200 )
+          .addClass( "ui-state-highlight", 200 )
+          .removeClass( "ui-state-highlight", 200 );
+      } else {
+        tips.text(defaultTip);
+      }
+    }
+
+    function checkRegexp( o, regexp, n, alert ) {
+      if(alert !== false) alert = true;
+      if ( !( regexp.test( o.val() ) ) ) {
+        if(alert) {
+          o.addClass( "ui-state-error" );
+          updateTips( n );
+        }
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    $("button#inscribirse").click(function(e){
+      loadFields("#dialog-avisenme");
+      defaultTip = "Déjanos tu teléfono o correo electrónico para entregarte los detalles";
+      successTip = "Te contactaremos cuanto antes.";
+      var evento = $(this).attr("data-curso");
+      $("#dialog-avisenme").dialog({
+        modal: true,
+        title: "Curso '" + evento + "'",
+        buttons: {
+          "Guardar": function() {
+            var valid = true;
+            var contacto = false;
+            updateTips();
+            allFields.removeClass( "ui-state-error" );
+            valid = valid && checkRegexp(name, nameRegexp, "Por favor escribe tu nombre");
+            contacto = contacto || checkRegexp(phone, phoneRegexp, "", false);
+            contacto = contacto || checkRegexp(email, emailRegexp, "", false);
+            if(!valid) return;
+            if(!contacto) {
+              email.add(phone).addClass("ui-state-error");
+              updateTips("Por favor ingresa un celular o correo electrónico válido");
+            }
+            if(valid && contacto) {
+              vName = name.val();
+              vPhone = phone.val();
+              vEmail = email.val();
+              $.post("/contacto/", { contact: { user: vName, phone: vPhone, email: vEmail, event: evento } }, function () {
+                $("#dialog-avisenme").dialog("close");
+                $("h1#successTip").text(successTip);
+                $("#dialog-ok").dialog({modal: true, buttons: {OK: function() {$( this ).dialog( "close" );}}})
+              });
+            }
+          },
+          "Cancelar": function () { $( this ).dialog( "close" ); }
+        }
+      });
+      e.preventDefault();
+    });
+
+
+- content_for :title do
+  27-Mar / 19:45 / co-work providencia
+
+- content_for :nombre_curso do
+  importaciones

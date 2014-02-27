@@ -18,6 +18,8 @@ Stc::Application.routes.draw do
   post "/contacto/", to: "home#contacto"
 
   get '/evento/aspectos-contables-y-legales-al-formar-una-empresa', to: 'events#clase1', as: 'clase1'
+  get '/evento/partir-empresa-limitada-o-por-acciones', to: 'events#clase13marzo', as: 'clase13marzo'
+  get '/evento/comenzar-negocio-de-importaciones-en-chile', to: 'events#clase27marzo', as: 'clase27marzo'
 
   get '/auth/:provider/callback', to: 'sessions#auth_callback'
 
