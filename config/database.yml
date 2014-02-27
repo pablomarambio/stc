@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   user: postgres
-  password: wilson
+  password: bbbbbb
   host: localhost
   database: startclass
   pool: 5
@@ -19,7 +19,7 @@ test:
   adapter: postgresql
   host: localhost
   user: postgres
-  password: wilson
+  password: bbbbbb
   database: startclass_test
   pool: 5
   timeout: 5000
@@ -28,7 +28,7 @@ test:
 production:
   adapter: postgresql
   user: postgres
-  password: wilson
+  password: bbbbbb
   host: localhost
   database: startclass
   pool: 5

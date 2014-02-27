@@ -21,5 +21,10 @@ Stc::Application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#auth_callback'
 
+  scope "/clases-presenciales" do
+    get "13-de-marzo", to: "clases_presenciales#marzo13"
+    get "27-de-marzo", to: "clases_presenciales#marzo27"
+  end
+
   root :to => "home#index"
 end
