@@ -43,6 +43,7 @@
               %th Email
               %th Interés en Curso
               %th Comentario
+              %th Código descuento
             - @contacts.each do |j|
               %tr
                 %td= j.id
@@ -52,3 +53,4 @@
                 %td= j.email
                 %td= j.event
                 %td= j.comment
+                %td= j.code

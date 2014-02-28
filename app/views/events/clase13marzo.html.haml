@@ -72,6 +72,8 @@
       %input#phone.text.ui-widget-content.ui-corner-all{name: "phone", type: "text", value: ""}/
       %label{for: "email"} Email
       %input#email.text.ui-widget-content.ui-corner-all{name: "email", type: "email", value: ""}/
+      %label{for: "phone"} Código de descuento
+      %input#code.text.ui-widget-content.ui-corner-all{name: "code", type: "text", value: ""}/
 #dialog-ok{style: "display:none;"}
   %h1 Te contactaremos lo antes posible.
 
@@ -82,6 +84,7 @@
     var phone =      null;
     var email =      null;
     var comment =    null;
+    var code =       null;
     var tips =       null;
     var allFields =  null;
     var defaultTip = null;
@@ -95,6 +98,7 @@
       name = $(where + " input[name='name']");
       phone = $(where + " input[name='phone']");
       email = $(where + " input[name='email']");
+      code = $(where + " input[name='code']");
       comment = $(where + " textarea");
       allFields = $( [] ).add( name ).add( email ).add( phone ).add( comment );
       tips = $(where + " p.validateTips");
@@ -149,10 +153,11 @@
               updateTips("Por favor ingresa un celular o correo electrónico válido");
             }
             if(valid && contacto) {
-              vName = name.val();
-              vPhone = phone.val();
-              vEmail = email.val();
-              $.post("/contacto/", { contact: { user: vName, phone: vPhone, email: vEmail, event: evento } }, function () {
+              var vName = name.val();
+              var vPhone = phone.val();
+              var vEmail = email.val();
+              var vCode = code.val();
+              $.post("/contacto/", { contact: { user: vName, phone: vPhone, email: vEmail, event: evento, code: vCode } }, function () {
                 $("#dialog-avisenme").dialog("close");
                 $("h1#successTip").text(successTip);
                 $("#dialog-ok").dialog({modal: true, buttons: {OK: function() {$( this ).dialog( "close" );}}})
@@ -164,6 +169,7 @@
       });
       e.preventDefault();
     });
+
 
 
 - content_for :title do

@@ -15,6 +15,6 @@ class HomeController < ApplicationController
   end
 
   def contact_params
-  	params.require(:contact).permit(:user, :email, :phone, :event, :comment)
+  	params.require(:contact).permit(:user, :email, :phone, :event, :comment, :code)
   end
 end
