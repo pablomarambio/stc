@@ -199,6 +199,7 @@ nav#inv.navbar a.navbar-brand {
 
 nav#inv.navbar a.title {
 	font-size: 2.5em;
+	font-variant: small-caps;
 }
 
 #event-header {
