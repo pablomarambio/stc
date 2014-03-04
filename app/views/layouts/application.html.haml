@@ -35,12 +35,12 @@
           %li 
             %a.navbar-brand{href: root_path}
           %li.visible-xs
-            %button.inscribirse.btn.navbar-btn{:"data-curso" => yield(:nombre_curso) } inscribirse
+            %button.inscribirse.btn.navbar-btn inscribirse
           %li.hidden-xs
             %a.title{href: root_path}= content_for :title
         %ul.nav.navbar-nav.navbar-right.hidden-xs
           %li
-            %button.inscribirse.btn.navbar-btn{:"data-curso" => yield(:nombre_curso) } inscribirse
+            %button.inscribirse.btn.navbar-btn inscribirse
                 
     = yield
 
@@ -97,11 +97,11 @@
           }
         }
 
-        $("button.inscribirse").click(function(e){
+        $("button.inscribirse, a.inscribirse").click(function(e){
           loadFields("#dialog-avisenme");
           defaultTip = "Déjanos tu teléfono o correo electrónico para entregarte los detalles";
           successTip = "Te contactaremos cuanto antes.";
-          var evento = $(this).attr("data-curso");
+          var evento = "#{yield(:nombre_curso).gsub("\n", "")}";
           $("#dialog-avisenme").dialog({
             modal: true,
             title: "Curso '" + evento + "'",
@@ -138,5 +138,5 @@
         });
 
         #{yield(:script)}
-        
+
       });
