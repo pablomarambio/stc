@@ -4,96 +4,69 @@
 - content_for :nombre_curso do
   importaciones
 
-#event-header
-  .container
-    .row
-      .col-md-12
-        %h1 comenzando un negocio de importaciones en chile
-        %h2 Necesidad, Proveedores, Transporte, Internacion
-.container.curso
-  .row
-    .col-md-7
-      %p.h3
-        %strong Cuándo:
-        Jueves 27 de marzo 2014 de 19:45 a 22:00 hrs.
-      %p.h3
-        %strong Dónde:
-        Co-Work, La Concepción 141, Of. 501, Providencia
-      %p.h3
-        %strong Expone:
-        Benjamín de Amesti
-    .col-md-5
-      .date
-        %p
-          27
-          %span MAR
-      %ul.demo-tags
-        %li
-          %a.inscribirse{href: "#"} $30.000
-  .row
-    .col-md-7
-      .pretty-box.temario
-        %p
-          Curso para emprendedores con o sin conocimiento en comercio internacional que deseen generar ingresos a través de un exitoso negocio de importaciones.
-        %h4 Necesidad, Proveedores, Transporte, Internacion
-        %ul
-          %li Qué necesita nuestro mercado. Por qué ese producto?
-          %li Búsqueda y selección del proveedor
-          %li Validación de proveedores y herramientas para minimizar el riesgo
-          %li Negociación con el proveedor
-          %li Medios de pago para la operación
-          %li Consolidación de carga
-          %li Selección del transporte (marítimo / aéreo) y contratación de seguros
-          %li Tramitación aduanera, retiro de mercancía y roles del Agente de Aduana
-          %li Entidades que intervienen en la importación
-          %li Costos ocultos de una importación
-          %li Tratados de libre comercio e impuesto ad-valorem
-          %li Problemas y errores comunes a la hora de importar (esto se puede agregar en cada uno de los temas anteriores)
-    .col-md-5
-      %iframe{ src: "https://mapsengine.google.com/map/u/0/embed?mid=z0umjk9nG7zM.kb9ClmI9idgk", width: "100%", height: 480}
-  .row
-    .col-md-12
-      %button.inscribirse.wide.btn{:"data-curso" => yield(:nombre_curso) }
-        %span.hidden-xs Inscribirse en 30 segundos >
-        %span.visible-xs Inscribirse >
-  .row
-    .col-md-12
-      %h2 Instructores
-  .row
-    .col-md-6
-      .member
-        = image_tag "mugshot-ba.jpg"
-        %h3 Benjamín de Amesti
-        %ul.text-left
-          %li Ingeniero Civil
-          %li 
-            Gerente 
-            = link_to "Recal", "http://www.recal.cl/"
-    .col-md-6
-      .member
-        = image_tag "http://clubatletismomalaga.es/images/stories/unknown_user.jpg"
-        %h3 Norman Bobilier 
-        %ul.text-left
-          %li Agente de Aduanas 
-          %li
-            = link_to "V. Goudie.", "http://www.vgoudie.cl/"
+- content_for :encabezado do
+  %h1 comenzando un negocio de importaciones en chile
+  %h2 Necesidad, Proveedores, Transporte, Internacion
+
+- content_for :url_mapa do
+  https://mapsengine.google.com/map/u/0/embed?mid=z0umjk9nG7zM.kb9ClmI9idgk
 
 
-#dialog-avisenme{style: "display:none;"}
-  %p.validateTips Déjanos tu teléfono o correo electrónico para contactarte con los detalles.
-  %form.dialog
-    %fieldset
-      %label{for: "name"} Nombre
-      %input#name.text.ui-widget-content.ui-corner-all{name: "name", type: "text"}/
-      %label{for: "phone"} Teléfono
-      %input#phone.text.ui-widget-content.ui-corner-all{name: "phone", type: "text", value: ""}/
-      %label{for: "email"} Email
-      %input#email.text.ui-widget-content.ui-corner-all{name: "email", type: "email", value: ""}/
-      %label{for: "phone"} Código de descuento
-      %input#code.text.ui-widget-content.ui-corner-all{name: "code", type: "text", value: ""}/
-#dialog-ok{style: "display:none;"}
-  %h1 Te contactaremos lo antes posible.
+- content_for :cuando_donde_quien do
+  %p.h3
+    %strong Cuándo:
+    Jueves 27 de marzo 2014 de 19:45 a 22:00 hrs.
+  %p.h3
+    %strong Dónde:
+    Co-Work, La Concepción 141, Of. 501, Providencia
+  %p.h3
+    %strong Expone:
+    Benjamín de Amesti
 
+- content_for :fecha_precio do
+  .date
+    %p
+      27
+      %span MAR
+  %ul.demo-tags
+    %li
+      %a.inscribirse{href: "#"} $30.000
+
+
+- content_for :temario do
+  %p
+    Curso para emprendedores con o sin conocimiento en comercio internacional que deseen generar ingresos a través de un exitoso negocio de importaciones.
+  %h4 Necesidad, Proveedores, Transporte, Internacion
+  %ul
+    %li Qué necesita nuestro mercado. Por qué ese producto?
+    %li Búsqueda y selección del proveedor
+    %li Validación de proveedores y herramientas para minimizar el riesgo
+    %li Negociación con el proveedor
+    %li Medios de pago para la operación
+    %li Consolidación de carga
+    %li Selección del transporte (marítimo / aéreo) y contratación de seguros
+    %li Tramitación aduanera, retiro de mercancía y roles del Agente de Aduana
+    %li Entidades que intervienen en la importación
+    %li Costos ocultos de una importación
+    %li Tratados de libre comercio e impuesto ad-valorem
+    %li Problemas y errores comunes a la hora de importar (esto se puede agregar en cada uno de los temas anteriores)
+
+- content_for :instructor_1 do
+  = image_tag "mugshot-ba.jpg"
+  %h3 Benjamín de Amesti
+  %ul.text-left
+    %li Ingeniero Civil
+    %li 
+      Gerente 
+      = link_to "Recal", "http://www.recal.cl/"
+
+- content_for :instructor_2 do
+  = image_tag "http://clubatletismomalaga.es/images/stories/unknown_user.jpg"
+  %h3 Norman Bobilier 
+  %ul.text-left
+    %li Agente de Aduanas 
+    %li
+      = link_to "V. Goudie.", "http://www.vgoudie.cl/"
 
 - content_for :script do
   :plain

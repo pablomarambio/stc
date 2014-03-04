@@ -42,7 +42,59 @@
           %li
             %button.inscribirse.btn.navbar-btn inscribirse
                 
-    = yield
+
+    #event-header
+      .container
+        .row
+          .col-md-12
+            = yield :encabezado
+    .container.curso
+      .row
+        .col-md-7
+          = yield :cuando_donde_quien
+        .col-md-5
+          = yield :fecha_precio
+      .row
+        .col-md-7
+          .pretty-box.temario
+            = yield :temario
+        .col-md-5.hidden-xs
+          %iframe{ src: content_for(:url_mapa), width: "100%", height: 480}
+      .row
+        .col-md-12
+          %button.inscribirse.wide.btn{:"data-curso" => yield(:nombre_curso) }
+            %span.hidden-xs Inscribirse en 30 segundos >
+            %span.visible-xs Inscribirse >
+      .row
+        .col-md-12
+          %h2= content_for?(:instructor_2) ? "Instructores" : "Instructor"
+      .row
+        .col-md-6
+          .member
+            = yield :instructor_1
+        .col-md-6
+          .member
+            = yield :instructor_2
+
+      .row
+        .col-md-12.visible-xs
+          %iframe{ src: content_for(:url_mapa), width: "100%", height: 480}
+
+
+    #dialog-avisenme{style: "display:none;"}
+      %p.validateTips Déjanos tu teléfono o correo electrónico para contactarte con los detalles.
+      %form.dialog
+        %fieldset
+          %label{for: "name"} Nombre
+          %input#name.text.ui-widget-content.ui-corner-all{name: "name", type: "text"}/
+          %label{for: "phone"} Teléfono
+          %input#phone.text.ui-widget-content.ui-corner-all{name: "phone", type: "text", value: ""}/
+          %label{for: "email"} Email
+          %input#email.text.ui-widget-content.ui-corner-all{name: "email", type: "email", value: ""}/
+          %label{for: "phone"} Código de descuento
+          %input#code.text.ui-widget-content.ui-corner-all{name: "code", type: "text", value: ""}/
+    #dialog-ok{style: "display:none;"}
+      %h1 Te contactaremos lo antes posible.
 
     = javascript_include_tag "application"
     :javascript
@@ -103,6 +155,8 @@
           successTip = "Te contactaremos cuanto antes.";
           var evento = "#{yield(:nombre_curso).gsub("\n", "")}";
           $("#dialog-avisenme").dialog({
+            width: 'auto', // overcomes width:'auto' and maxWidth bug
+            maxWidth: 600,
             modal: true,
             title: "Curso '" + evento + "'",
             buttons: {

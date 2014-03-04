@@ -4,90 +4,61 @@
 - content_for :nombre_curso do
   SRL vs. SPA
 
-#event-header
-  .container
-    .row
-      .col-md-12
-        %h1 ¿sociedad de responsabilidad limitada o por acciones?
-        %h2 tipos de sociedad / esquemas de participación / constitución e inicio de actividades
-.container.curso
-  .row
-    .col-md-7
-      %p.h3
-        %strong Cuándo:
-        Jueves 13 de marzo 2014 de 19:45 a 22:00 hrs.
-      %p.h3
-        %strong Dónde:
-        Centro de Eventos Vitacura, San Félix 1318, Vitacura
-      %p.h3
-        %strong Expone:
-        Alan Krausz
-    .col-md-5
-      .date
-        %p
-          13
-          %span MAR
-      %ul.demo-tags
-        %li
-          %a.inscribirse{href: "#"} $25.000
-  .row
-    .col-md-7
-      .pretty-box.temario
-        %p
-          En este curso aprenderás a elegir el tipo de sociedad que mejor se adapte a tu negocio y conocer sus diferencias. Entregaremos los conocimientos legales para constituir y operar una empresa. Se revisarán las distintas clases de sociedades (EIRL, SpA, Ltda, entre otras) y se mostrarán los beneficios a largo plazo de cada sociedad, dependiendo si esperas tener inversionistas o no. Además, se revisarán las obligaciones tributarias que implica tener una empresa.
-        %h4 tipos de sociedad y esquemas de participación
-        %ul
-          %li ¿Por qué una sociedad? Cuándo no conviene / no aplica la persona natural.
-          %li Tipos de sociedad. Sociedades de personas y de capital. EIRL, LTDA, SpA, SA. Similitudes y diferencias.
-          %li Acuerdos de participación. Acciones. Protección para los socios y la empresa.
-          %li Estructura de una empresa. Accionistas, directorio, administración, etc.
-          %li Riesgos del Negocio
-        %h4 constitución de sociedad e iniciación de actividades
-        %ul
-          %li Cómo constituir una sociedad.
-          %li Checklist para constitución vía Internet: requisitos, limitaciones, costos y plazos.
-          %li Checklist para constitución presencial: actores, papeles, costos y plazos.
-          %li Otros requisitos para iniciar actividades. RUT, patente, permisos. Actores, papeles, costos y plazos.
-          %li Valor de toda la operación
-    .col-md-5
-      %iframe{ src: "https://mapsengine.google.com/map/u/0/embed?mid=z0umjk9nG7zM.k5UyS7WRDpH0", width: "100%", height: 480}
-  .row
-    .col-md-12
-      %button.inscribirse.wide.btn{:"data-curso" => yield(:nombre_curso) }
-        %span.hidden-xs Inscribirse en 30 segundos >
-        %span.visible-xs Inscribirse >
-  .row
-    .col-md-12
-      %h2 Instructor
-  .row
-    .col-md-6
-      .member
-        = image_tag "mugshot-ak.jpg"
-        %h3 Alan Krausz
-        %ul.text-left
-          %li Abogado Universidad de Chile; Master en Business Law Universidad Adolfo Ibáñez
-          %li Especialista en Derecho del Consumidor, Derecho Civil, Comercial y Económico
-          %li Profesor "Derecho y Empresa" Universidad Adolfo Ibáñez
-          %li
-            Fundador de
-            = link_to "Kawell", "http://www.kawell.cl/"
+- content_for :encabezado do
+  %h1 ¿sociedad de responsabilidad limitada o por acciones?
+  %h2 tipos de sociedad / esquemas de participación / constitución e inicio de actividades
 
+- content_for :url_mapa do
+  https://mapsengine.google.com/map/u/0/embed?mid=z0umjk9nG7zM.k5UyS7WRDpH0
 
-#dialog-avisenme{style: "display:none;"}
-  %p.validateTips Déjanos tu teléfono o correo electrónico para contactarte con los detalles.
-  %form.dialog
-    %fieldset
-      %label{for: "name"} Nombre
-      %input#name.text.ui-widget-content.ui-corner-all{name: "name", type: "text"}/
-      %label{for: "phone"} Teléfono
-      %input#phone.text.ui-widget-content.ui-corner-all{name: "phone", type: "text", value: ""}/
-      %label{for: "email"} Email
-      %input#email.text.ui-widget-content.ui-corner-all{name: "email", type: "email", value: ""}/
-      %label{for: "phone"} Código de descuento
-      %input#code.text.ui-widget-content.ui-corner-all{name: "code", type: "text", value: ""}/
-#dialog-ok{style: "display:none;"}
-  %h1 Te contactaremos lo antes posible.
+- content_for :cuando_donde_quien do
+  %p.h3
+    %strong Cuándo:
+    Jueves 13 de marzo 2014 de 19:45 a 22:00 hrs.
+  %p.h3
+    %strong Dónde:
+    Centro de Eventos Vitacura, San Félix 1318, Vitacura
+  %p.h3
+    %strong Expone:
+    Alan Krausz
 
+- content_for :fecha_precio do
+  .date
+    %p
+      13
+      %span MAR
+  %ul.demo-tags
+    %li
+      %a.inscribirse{href: "#"} $25.000
+
+- content_for :temario do
+  %p
+    En este curso aprenderás a elegir el tipo de sociedad que mejor se adapte a tu negocio y conocer sus diferencias. Entregaremos los conocimientos legales para constituir y operar una empresa. Se revisarán las distintas clases de sociedades (EIRL, SpA, Ltda, entre otras) y se mostrarán los beneficios a largo plazo de cada sociedad, dependiendo si esperas tener inversionistas o no. Además, se revisarán las obligaciones tributarias que implica tener una empresa.
+  %h4 tipos de sociedad y esquemas de participación
+  %ul
+    %li ¿Por qué una sociedad? Cuándo no conviene / no aplica la persona natural.
+    %li Tipos de sociedad. Sociedades de personas y de capital. EIRL, LTDA, SpA, SA. Similitudes y diferencias.
+    %li Acuerdos de participación. Acciones. Protección para los socios y la empresa.
+    %li Estructura de una empresa. Accionistas, directorio, administración, etc.
+    %li Riesgos del Negocio
+  %h4 constitución de sociedad e iniciación de actividades
+  %ul
+    %li Cómo constituir una sociedad.
+    %li Checklist para constitución vía Internet: requisitos, limitaciones, costos y plazos.
+    %li Checklist para constitución presencial: actores, papeles, costos y plazos.
+    %li Otros requisitos para iniciar actividades. RUT, patente, permisos. Actores, papeles, costos y plazos.
+    %li Valor de toda la operación
+
+- content_for :instructor_1 do
+  = image_tag "mugshot-ak.jpg"
+  %h3 Alan Krausz
+  %ul.text-left
+    %li Abogado Universidad de Chile; Master en Business Law Universidad Adolfo Ibáñez
+    %li Especialista en Derecho del Consumidor, Derecho Civil, Comercial y Económico
+    %li Profesor "Derecho y Empresa" Universidad Adolfo Ibáñez
+    %li
+      Fundador de
+      = link_to "Kawell", "http://www.kawell.cl/"
 
 - content_for :script do
   :plain
