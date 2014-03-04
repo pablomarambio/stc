@@ -44,6 +44,7 @@
               %th Interés en Curso
               %th Comentario
               %th Código descuento
+              %th Recomendador
             - @contacts.each do |j|
               %tr
                 %td= j.id
@@ -54,3 +55,4 @@
                 %td= j.event
                 %td= j.comment
                 %td= j.code
+                %td= j.referer

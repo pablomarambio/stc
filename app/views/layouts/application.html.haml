@@ -91,8 +91,13 @@
           %input#phone.text.ui-widget-content.ui-corner-all{name: "phone", type: "text", value: ""}/
           %label{for: "email"} Email
           %input#email.text.ui-widget-content.ui-corner-all{name: "email", type: "email", value: ""}/
-          %label{for: "phone"} Código de descuento
+          %label{for: "code"} Código de descuento
           %input#code.text.ui-widget-content.ui-corner-all{name: "code", type: "text", value: ""}/
+          %label{for: "referer"}
+            %em (opcional)
+            Nombre del recomendador
+          %input#referer.text.ui-widget-content.ui-corner-all{name: "referer", type: "text", value: ""}/
+
     #dialog-ok{style: "display:none;"}
       %h1 Te contactaremos lo antes posible.
 
@@ -103,6 +108,7 @@
         var phone =      null;
         var email =      null;
         var comment =    null;
+        var referer =    null;
         var code =       null;
         var tips =       null;
         var allFields =  null;
@@ -118,6 +124,7 @@
           phone = $(where + " input[name='phone']");
           email = $(where + " input[name='email']");
           code = $(where + " input[name='code']");
+          referer = $(where + " input[name='referer']");
           comment = $(where + " textarea");
           allFields = $( [] ).add( name ).add( email ).add( phone ).add( comment );
           tips = $(where + " p.validateTips");
@@ -178,7 +185,8 @@
                   var vPhone = phone.val();
                   var vEmail = email.val();
                   var vCode = code.val();
-                  $.post("/contacto/", { contact: { user: vName, phone: vPhone, email: vEmail, event: evento, code: vCode } }, function () {
+                  var vReferer = referer.val();
+                  $.post("/contacto/", { contact: { user: vName, phone: vPhone, email: vEmail, event: evento, code: vCode, referer: vReferer } }, function () {
                     $("#dialog-avisenme").dialog("close");
                     $("h1#successTip").text(successTip);
                     $("#dialog-ok").dialog({modal: true, buttons: {OK: function() {$( this ).dialog( "close" );}}})
