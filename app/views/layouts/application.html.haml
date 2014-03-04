@@ -34,12 +34,12 @@
           %li 
             %a.navbar-brand{href: root_path}
           %li.visible-xs
-            %button.btn.btn-warning.navbar-btn Inscribirse en este curso
+            %button.inscripcion.btn.btn-warning.navbar-btn Inscribirse en este curso
           %li.hidden-xs
             %a.title{href: root_path}= content_for :title
         %ul.nav.navbar-nav.navbar-right.hidden-xs
           %li
-            %button#inscribirse.btn.btn-default.navbar-btn{:"data-curso" => yield(:nombre_curso) } Inscribirse
+            %button#inscribirse.btn.btn-warning.navbar-btn{:"data-curso" => yield(:nombre_curso) } Inscribirse
                 
     = yield
 

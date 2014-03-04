@@ -453,8 +453,6 @@ a.avisenme {
 	padding: 15px 0;
 }
 
-
-
 /* Footer */
 
 .footer {
@@ -551,8 +549,6 @@ a.avisenme {
 }
 
 
-
-
 /* Mobile */
 @media screen and (max-width: 480px) {
 
@@ -577,9 +573,4 @@ a.avisenme {
 		line-height: 1em;
 	}
 
-
 }
-
-
-
-
