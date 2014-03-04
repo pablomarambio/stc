@@ -76,9 +76,9 @@
           .member
             = yield :instructor_2
 
-      .row
-        .col-md-12.visible-xs
-          %iframe{ src: content_for(:url_mapa), width: "100%", height: 480}
+      .row.visible-xs
+        %h2 ¿Cómo llego?
+        %iframe{ src: content_for(:url_mapa), width: "100%", height: 250}
 
 
     #dialog-avisenme{style: "display:none;"}
