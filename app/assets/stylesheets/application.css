@@ -240,8 +240,26 @@ nav#inv.navbar a.title {
 	border-radius: 50%;
 }
 
-button.inscripcion {
-	margin-left: 2em;
+button.btn.inscribirse {
+	color: white;
+	font-weight: bold;
+	background-color: #d10000;
+	border-color: #d10000;
+	font-variant: small-caps;
+	font-size: 1.5em;
+	line-height: 1em;
+}
+
+button.btn.inscribirse.wide {
+	font-size: 3em;
+	font-variant: normal;
+	height: 2em;
+	width: 100%;
+	margin: 1em auto;
+}
+
+li.visible-xs button.inscribirse {
+	margin-left: 4em;
 }
 
 
