@@ -58,8 +58,9 @@
         .col-md-7
           .pretty-box.temario
             = yield :temario
-        .col-md-5.hidden-xs
-          %iframe{ src: content_for(:url_mapa), width: "100%", height: 480}
+        - if content_for? :url_mapa
+          .col-md-5.hidden-xs
+            %iframe{ src: content_for(:url_mapa), width: "100%", height: 480}
       .row
         .col-md-12
           %button.inscribirse.wide.btn{:"data-curso" => yield(:nombre_curso) }
@@ -78,7 +79,8 @@
 
       .row.visible-xs
         %h2 ¿Cómo llego?
-        %iframe{ src: content_for(:url_mapa), width: "100%", height: 250}
+        - if content_for? :url_mapa
+          %iframe{ src: content_for(:url_mapa), width: "100%", height: 250}
 
 
     #dialog-avisenme{style: "display:none;"}
